@@ -1,0 +1,818 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0159AB79B6A64FB759BE06FF /* CategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BB7B6240E920A995EC1719 /* CategoryListView.swift */; };
+		019610F73E0B2DD826405115 /* Ports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2017E50B96BB437A3E39E4F4 /* Ports.swift */; };
+		01AE671DE604CD1F2CC262D2 /* FoundationVolumeCapacityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9285A94D7E2CA4CDFE52D202 /* FoundationVolumeCapacityProvider.swift */; };
+		025E1CDA3F0E50327C17C1A2 /* StorageScanCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9814CCAC044C5BACB4F83554 /* StorageScanCatalog.swift */; };
+		0E74F6F5D33ADBF2D5AECC81 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 623EE353D4F5F1FD40D27AF0 /* Cocoa.framework */; };
+		0FC0A8B938A36838C95F4B4C /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A01CDFCA2E385B78E95AE /* DashboardModel.swift */; };
+		20AB1DD9F262617956B7AEBF /* CleanSpaceDirectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49A1143C2719009C43B1279 /* CleanSpaceDirectApp.swift */; };
+		3116D2110B1CFB9918C6B636 /* RegisteredRootScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F7F83483A46209E9E133A /* RegisteredRootScanner.swift */; };
+		42DCE7FDDC43278EBD6BD17A /* CleanSpaceRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0AAA594E3F314AB36BBE28 /* CleanSpaceRootView.swift */; };
+		43B5D5C20376CE50A46CA107 /* CleanupShelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9235766A3F52DA8296520BBF /* CleanupShelfView.swift */; };
+		48704A95509687AB4AAC18A1 /* CleanupModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9226C285A047DD761C8E38AA /* CleanupModels.swift */; };
+		4A4DDF7C5781C2A53EE23D93 /* libCleanSpaceCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F515DEC444E42FA61DA807F /* libCleanSpaceCore.a */; };
+		4EA4591247B2C03C844EA78A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76B95F59DB4848FBB4D88454 /* Assets.xcassets */; };
+		5AA763D1919C484732278777 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 61CC38275AC5C6F1679AE422 /* PrivacyInfo.xcprivacy */; };
+		6C33D014CD09680ACB474D11 /* FoundationWorkspaceRevealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C891C8B1E5FA31831F8E7AE /* FoundationWorkspaceRevealer.swift */; };
+		7144CEE01AC8C6DFDBC16DE3 /* StorageModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03322EB3E21E7773504B5A7F /* StorageModels.swift */; };
+		7529B0229032AD3F788D7384 /* StorageSemanticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D5DEE1FDACD2B519F4480 /* StorageSemanticsTests.swift */; };
+		7BBD459F5BF6805CF0D52FAD /* libCleanSpaceCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F515DEC444E42FA61DA807F /* libCleanSpaceCore.a */; };
+		85C3AAD925CF1599E8903163 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 623EE353D4F5F1FD40D27AF0 /* Cocoa.framework */; };
+		8CB2328ACA78663834EF0BCF /* CleanSpaceMenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B026FCB9437CDFD39A7031 /* CleanSpaceMenuBarView.swift */; };
+		9258B5DEAA835AAAF3E381A5 /* Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7BD0E8E326F0782D794DB6 /* Formatting.swift */; };
+		97DA8C54763065009ED70163 /* RegisteredCleanupExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408E629E3421ED2405B53650 /* RegisteredCleanupExecutor.swift */; };
+		9C242F97812F2243537ED0B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76B95F59DB4848FBB4D88454 /* Assets.xcassets */; };
+		A24CB62A9ED5BB0A4B4CF67E /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FA50E3F3B8CA9CB8606802 /* AppEnvironment.swift */; };
+		A6C18F6CB6BC5EB082C23033 /* InspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF5F6D2729A856FFD409C21 /* InspectorView.swift */; };
+		A831C8A961506F18074F39A7 /* StorageAccessProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACB3648030342155D50A8C0 /* StorageAccessProviders.swift */; };
+		AFEEAC236E661BC62BFFBE9E /* CleanSpaceStoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AA8BB947ECA6A5FC006863 /* CleanSpaceStoreApp.swift */; };
+		B2F74A3890FF5949529C2866 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 623EE353D4F5F1FD40D27AF0 /* Cocoa.framework */; };
+		B7F298EBECAF067CC569B9BF /* CleanupConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E543E652DDBB05586F6EDB16 /* CleanupConfirmationView.swift */; };
+		C2519CB4A9615D951A6C00D5 /* StorageCategoryPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FC293EEA063B69B55E9CD /* StorageCategoryPresentation.swift */; };
+		D230DDF045EDCCD06E701B4D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = C89AFCB7122CD6FC531F4F94 /* PrivacyInfo.xcprivacy */; };
+		DD65DA4BCEF1C885649D5BE4 /* StorageRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDAA097D1D18547C1FA0304 /* StorageRingView.swift */; };
+		DDB4EBEE3A68475B96D74E8D /* libCleanSpaceCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F515DEC444E42FA61DA807F /* libCleanSpaceCore.a */; };
+		F99337362F8C78AF64DAF0F3 /* ScanModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1867A1865DF0E14F64BF9 /* ScanModels.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		116B5B95CA05093DCAB5AE0F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C469952DC44C931755BE874D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CEB9F2514947CF37CDA048F0;
+			remoteInfo = CleanSpaceDirect;
+		};
+		25BA77D8649329BCA5239916 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C469952DC44C931755BE874D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3495EB68B673F7F07052A70E;
+			remoteInfo = CleanSpaceCore;
+		};
+		B929A0F29215203DF72667EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C469952DC44C931755BE874D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3495EB68B673F7F07052A70E;
+			remoteInfo = CleanSpaceCore;
+		};
+		D55A7D723551686E0419B1F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C469952DC44C931755BE874D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3495EB68B673F7F07052A70E;
+			remoteInfo = CleanSpaceCore;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		03322EB3E21E7773504B5A7F /* StorageModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StorageModels.swift; path = Domain/StorageModels.swift; sourceTree = "<group>"; };
+		06AA8BB947ECA6A5FC006863 /* CleanSpaceStoreApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CleanSpaceStoreApp.swift; sourceTree = "<group>"; };
+		08A4B214AD57316DF0B918FF /* CleanSpaceDirect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanSpaceDirect.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		115F7F83483A46209E9E133A /* RegisteredRootScanner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RegisteredRootScanner.swift; path = Infrastructure/RegisteredRootScanner.swift; sourceTree = "<group>"; };
+		1A143F8CB634F2AD189585C3 /* CleanSpaceStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanSpaceStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F515DEC444E42FA61DA807F /* libCleanSpaceCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCleanSpaceCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2017E50B96BB437A3E39E4F4 /* Ports.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Ports.swift; path = Infrastructure/Ports.swift; sourceTree = "<group>"; };
+		408E629E3421ED2405B53650 /* RegisteredCleanupExecutor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RegisteredCleanupExecutor.swift; path = Infrastructure/RegisteredCleanupExecutor.swift; sourceTree = "<group>"; };
+		496C16A39044C2F5A4A75E7F /* CleanSpaceStore.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = CleanSpaceStore.entitlements; sourceTree = "<group>"; };
+		4ACB3648030342155D50A8C0 /* StorageAccessProviders.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StorageAccessProviders.swift; path = Infrastructure/StorageAccessProviders.swift; sourceTree = "<group>"; };
+		4C2FC293EEA063B69B55E9CD /* StorageCategoryPresentation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StorageCategoryPresentation.swift; path = UI/StorageCategoryPresentation.swift; sourceTree = "<group>"; };
+		5F0AAA594E3F314AB36BBE28 /* CleanSpaceRootView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CleanSpaceRootView.swift; path = UI/CleanSpaceRootView.swift; sourceTree = "<group>"; };
+		61CC38275AC5C6F1679AE422 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = Resources/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		623EE353D4F5F1FD40D27AF0 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		63FA50E3F3B8CA9CB8606802 /* AppEnvironment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppEnvironment.swift; path = Environment/AppEnvironment.swift; sourceTree = "<group>"; };
+		6C891C8B1E5FA31831F8E7AE /* FoundationWorkspaceRevealer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FoundationWorkspaceRevealer.swift; path = Infrastructure/FoundationWorkspaceRevealer.swift; sourceTree = "<group>"; };
+		76B95F59DB4848FBB4D88454 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		89B026FCB9437CDFD39A7031 /* CleanSpaceMenuBarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CleanSpaceMenuBarView.swift; path = UI/CleanSpaceMenuBarView.swift; sourceTree = "<group>"; };
+		8B7BD0E8E326F0782D794DB6 /* Formatting.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Formatting.swift; path = UI/Formatting.swift; sourceTree = "<group>"; };
+		8FD5C3D31B0CB5F872316135 /* CleanSpaceDirect.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = CleanSpaceDirect.entitlements; sourceTree = "<group>"; };
+		9226C285A047DD761C8E38AA /* CleanupModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CleanupModels.swift; path = Domain/CleanupModels.swift; sourceTree = "<group>"; };
+		9235766A3F52DA8296520BBF /* CleanupShelfView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CleanupShelfView.swift; path = UI/CleanupShelfView.swift; sourceTree = "<group>"; };
+		9285A94D7E2CA4CDFE52D202 /* FoundationVolumeCapacityProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FoundationVolumeCapacityProvider.swift; path = Infrastructure/FoundationVolumeCapacityProvider.swift; sourceTree = "<group>"; };
+		9814CCAC044C5BACB4F83554 /* StorageScanCatalog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StorageScanCatalog.swift; path = Infrastructure/StorageScanCatalog.swift; sourceTree = "<group>"; };
+		AE3A01CDFCA2E385B78E95AE /* DashboardModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DashboardModel.swift; path = Presentation/DashboardModel.swift; sourceTree = "<group>"; };
+		AFF5F6D2729A856FFD409C21 /* InspectorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InspectorView.swift; path = UI/InspectorView.swift; sourceTree = "<group>"; };
+		B49A1143C2719009C43B1279 /* CleanSpaceDirectApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CleanSpaceDirectApp.swift; sourceTree = "<group>"; };
+		B52A0B974A1623CA6592E00E /* Shared.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
+		C4BB7B6240E920A995EC1719 /* CategoryListView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CategoryListView.swift; path = UI/CategoryListView.swift; sourceTree = "<group>"; };
+		C89AFCB7122CD6FC531F4F94 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = Resources/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		CBDAA097D1D18547C1FA0304 /* StorageRingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StorageRingView.swift; path = UI/StorageRingView.swift; sourceTree = "<group>"; };
+		CE3D5DEE1FDACD2B519F4480 /* StorageSemanticsTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StorageSemanticsTests.swift; path = CleanSpaceCoreTests/StorageSemanticsTests.swift; sourceTree = "<group>"; };
+		E30CFD884A83761991351C63 /* CleanSpaceCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanSpaceCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E543E652DDBB05586F6EDB16 /* CleanupConfirmationView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CleanupConfirmationView.swift; path = UI/CleanupConfirmationView.swift; sourceTree = "<group>"; };
+		EAE1867A1865DF0E14F64BF9 /* ScanModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScanModels.swift; path = Domain/ScanModels.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		05C30CF5CC0AC78D71EAE291 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85C3AAD925CF1599E8903163 /* Cocoa.framework in Frameworks */,
+				DDB4EBEE3A68475B96D74E8D /* libCleanSpaceCore.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76A5EC0972C95FD32689DED3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E74F6F5D33ADBF2D5AECC81 /* Cocoa.framework in Frameworks */,
+				4A4DDF7C5781C2A53EE23D93 /* libCleanSpaceCore.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A4DD9AD348EB1ECACE3C29E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2F74A3890FF5949529C2866 /* Cocoa.framework in Frameworks */,
+				7BBD459F5BF6805CF0D52FAD /* libCleanSpaceCore.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9A3A9687D44B262A0E6EE5D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		033EDD969E15635840E7E4F5 /* CleanSpaceCore */ = {
+			isa = PBXGroup;
+			children = (
+				9226C285A047DD761C8E38AA /* CleanupModels.swift */,
+				EAE1867A1865DF0E14F64BF9 /* ScanModels.swift */,
+				03322EB3E21E7773504B5A7F /* StorageModels.swift */,
+				63FA50E3F3B8CA9CB8606802 /* AppEnvironment.swift */,
+				9285A94D7E2CA4CDFE52D202 /* FoundationVolumeCapacityProvider.swift */,
+				2017E50B96BB437A3E39E4F4 /* Ports.swift */,
+				115F7F83483A46209E9E133A /* RegisteredRootScanner.swift */,
+				4ACB3648030342155D50A8C0 /* StorageAccessProviders.swift */,
+				AE3A01CDFCA2E385B78E95AE /* DashboardModel.swift */,
+				C4BB7B6240E920A995EC1719 /* CategoryListView.swift */,
+				5F0AAA594E3F314AB36BBE28 /* CleanSpaceRootView.swift */,
+				9235766A3F52DA8296520BBF /* CleanupShelfView.swift */,
+				8B7BD0E8E326F0782D794DB6 /* Formatting.swift */,
+				AFF5F6D2729A856FFD409C21 /* InspectorView.swift */,
+				CBDAA097D1D18547C1FA0304 /* StorageRingView.swift */,
+				4C2FC293EEA063B69B55E9CD /* StorageCategoryPresentation.swift */,
+				6C891C8B1E5FA31831F8E7AE /* FoundationWorkspaceRevealer.swift */,
+				408E629E3421ED2405B53650 /* RegisteredCleanupExecutor.swift */,
+				9814CCAC044C5BACB4F83554 /* StorageScanCatalog.swift */,
+				E543E652DDBB05586F6EDB16 /* CleanupConfirmationView.swift */,
+				89B026FCB9437CDFD39A7031 /* CleanSpaceMenuBarView.swift */,
+			);
+			name = CleanSpaceCore;
+			path = CleanSpaceCore;
+			sourceTree = "<group>";
+		};
+		1E68E445C8FC86CC21958633 /* CleanSpaceDirect */ = {
+			isa = PBXGroup;
+			children = (
+				B49A1143C2719009C43B1279 /* CleanSpaceDirectApp.swift */,
+				C89AFCB7122CD6FC531F4F94 /* PrivacyInfo.xcprivacy */,
+			);
+			name = CleanSpaceDirect;
+			path = CleanSpaceDirect;
+			sourceTree = "<group>";
+		};
+		38ADBF6E863669538C0E91F8 = {
+			isa = PBXGroup;
+			children = (
+				EDAFB7AEB9723EB58E663F45 /* Products */,
+				D38CAE478274429CE1647199 /* Frameworks */,
+				BEFBBAF29180BC97E89F69C6 /* Sources */,
+				79D2F6CD51174DBF945EC39B /* Tests */,
+				8022FA4FCDB23845C499FF18 /* Configurations */,
+				9FCED7583C2C7D57BD70645B /* Resources */,
+			);
+			sourceTree = "<group>";
+		};
+		79D2F6CD51174DBF945EC39B /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				CE3D5DEE1FDACD2B519F4480 /* StorageSemanticsTests.swift */,
+			);
+			name = Tests;
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		8022FA4FCDB23845C499FF18 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				B52A0B974A1623CA6592E00E /* Shared.xcconfig */,
+				8FD5C3D31B0CB5F872316135 /* CleanSpaceDirect.entitlements */,
+				496C16A39044C2F5A4A75E7F /* CleanSpaceStore.entitlements */,
+			);
+			name = Configurations;
+			path = Configurations;
+			sourceTree = "<group>";
+		};
+		9FCED7583C2C7D57BD70645B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				76B95F59DB4848FBB4D88454 /* Assets.xcassets */,
+			);
+			name = Resources;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AF0582D83695751A52617F9F /* OS X */ = {
+			isa = PBXGroup;
+			children = (
+				623EE353D4F5F1FD40D27AF0 /* Cocoa.framework */,
+			);
+			name = "OS X";
+			sourceTree = "<group>";
+		};
+		BEFBBAF29180BC97E89F69C6 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				033EDD969E15635840E7E4F5 /* CleanSpaceCore */,
+				1E68E445C8FC86CC21958633 /* CleanSpaceDirect */,
+				D565BBC8171D2C6798A5E0DD /* CleanSpaceStore */,
+			);
+			name = Sources;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		D38CAE478274429CE1647199 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AF0582D83695751A52617F9F /* OS X */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D565BBC8171D2C6798A5E0DD /* CleanSpaceStore */ = {
+			isa = PBXGroup;
+			children = (
+				06AA8BB947ECA6A5FC006863 /* CleanSpaceStoreApp.swift */,
+				61CC38275AC5C6F1679AE422 /* PrivacyInfo.xcprivacy */,
+			);
+			name = CleanSpaceStore;
+			path = CleanSpaceStore;
+			sourceTree = "<group>";
+		};
+		EDAFB7AEB9723EB58E663F45 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1F515DEC444E42FA61DA807F /* libCleanSpaceCore.a */,
+				08A4B214AD57316DF0B918FF /* CleanSpaceDirect.app */,
+				1A143F8CB634F2AD189585C3 /* CleanSpaceStore.app */,
+				E30CFD884A83761991351C63 /* CleanSpaceCoreTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		38DFA68507AE9A56681E6636 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		3495EB68B673F7F07052A70E /* CleanSpaceCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E34EE8BB3EAC00017A807203 /* Build configuration list for PBXNativeTarget "CleanSpaceCore" */;
+			buildPhases = (
+				38DFA68507AE9A56681E6636 /* Headers */,
+				7C23D5CEF3664AFF71D63335 /* Sources */,
+				B9A3A9687D44B262A0E6EE5D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CleanSpaceCore;
+			productName = CleanSpaceCore;
+			productReference = 1F515DEC444E42FA61DA807F /* libCleanSpaceCore.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		63D6B5CB4F7566717EDEA1F3 /* CleanSpaceStore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27EA68030885C9175480D142 /* Build configuration list for PBXNativeTarget "CleanSpaceStore" */;
+			buildPhases = (
+				8E71C0CF657B745C956439A1 /* Sources */,
+				05C30CF5CC0AC78D71EAE291 /* Frameworks */,
+				79ED6B911870E2308BFE955F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E25D3FA0AB867CBEC1DB7A4E /* PBXTargetDependency */,
+			);
+			name = CleanSpaceStore;
+			productName = CleanSpaceStore;
+			productReference = 1A143F8CB634F2AD189585C3 /* CleanSpaceStore.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B7D6975C6415ED6406FCBABE /* CleanSpaceCoreTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB6C9400933BE9A6B1B6082D /* Build configuration list for PBXNativeTarget "CleanSpaceCoreTests" */;
+			buildPhases = (
+				B6EC8D9DB9F6DF5B72C78D83 /* Sources */,
+				7A4DD9AD348EB1ECACE3C29E /* Frameworks */,
+				571CC20326CEAD2C6622CF5D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7AE9EC342D3656D412AA53B3 /* PBXTargetDependency */,
+				03EAF2EBBE3D4746F515D190 /* PBXTargetDependency */,
+			);
+			name = CleanSpaceCoreTests;
+			productName = CleanSpaceCoreTests;
+			productReference = E30CFD884A83761991351C63 /* CleanSpaceCoreTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CEB9F2514947CF37CDA048F0 /* CleanSpaceDirect */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C4DD4F7D63588993A767E703 /* Build configuration list for PBXNativeTarget "CleanSpaceDirect" */;
+			buildPhases = (
+				2F6F5BFEEBC92A1397DAADAA /* Sources */,
+				76A5EC0972C95FD32689DED3 /* Frameworks */,
+				005961CD82653ACF17A91AD1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CC5881624E29C015E9B3D4A2 /* PBXTargetDependency */,
+			);
+			name = CleanSpaceDirect;
+			productName = CleanSpaceDirect;
+			productReference = 08A4B214AD57316DF0B918FF /* CleanSpaceDirect.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C469952DC44C931755BE874D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 2660;
+				LastUpgradeCheck = 2660;
+			};
+			buildConfigurationList = 96D7DFB9739618DB42474F24 /* Build configuration list for PBXProject "CleanSpace" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 38ADBF6E863669538C0E91F8;
+			minimizedProjectReferenceProxies = 0;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = EDAFB7AEB9723EB58E663F45 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3495EB68B673F7F07052A70E /* CleanSpaceCore */,
+				CEB9F2514947CF37CDA048F0 /* CleanSpaceDirect */,
+				63D6B5CB4F7566717EDEA1F3 /* CleanSpaceStore */,
+				B7D6975C6415ED6406FCBABE /* CleanSpaceCoreTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		005961CD82653ACF17A91AD1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D230DDF045EDCCD06E701B4D /* PrivacyInfo.xcprivacy in Resources */,
+				4EA4591247B2C03C844EA78A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		571CC20326CEAD2C6622CF5D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79ED6B911870E2308BFE955F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AA763D1919C484732278777 /* PrivacyInfo.xcprivacy in Resources */,
+				9C242F97812F2243537ED0B1 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2F6F5BFEEBC92A1397DAADAA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20AB1DD9F262617956B7AEBF /* CleanSpaceDirectApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C23D5CEF3664AFF71D63335 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48704A95509687AB4AAC18A1 /* CleanupModels.swift in Sources */,
+				F99337362F8C78AF64DAF0F3 /* ScanModels.swift in Sources */,
+				7144CEE01AC8C6DFDBC16DE3 /* StorageModels.swift in Sources */,
+				A24CB62A9ED5BB0A4B4CF67E /* AppEnvironment.swift in Sources */,
+				01AE671DE604CD1F2CC262D2 /* FoundationVolumeCapacityProvider.swift in Sources */,
+				019610F73E0B2DD826405115 /* Ports.swift in Sources */,
+				3116D2110B1CFB9918C6B636 /* RegisteredRootScanner.swift in Sources */,
+				A831C8A961506F18074F39A7 /* StorageAccessProviders.swift in Sources */,
+				0FC0A8B938A36838C95F4B4C /* DashboardModel.swift in Sources */,
+				0159AB79B6A64FB759BE06FF /* CategoryListView.swift in Sources */,
+				42DCE7FDDC43278EBD6BD17A /* CleanSpaceRootView.swift in Sources */,
+				43B5D5C20376CE50A46CA107 /* CleanupShelfView.swift in Sources */,
+				9258B5DEAA835AAAF3E381A5 /* Formatting.swift in Sources */,
+				A6C18F6CB6BC5EB082C23033 /* InspectorView.swift in Sources */,
+				DD65DA4BCEF1C885649D5BE4 /* StorageRingView.swift in Sources */,
+				C2519CB4A9615D951A6C00D5 /* StorageCategoryPresentation.swift in Sources */,
+				6C33D014CD09680ACB474D11 /* FoundationWorkspaceRevealer.swift in Sources */,
+				97DA8C54763065009ED70163 /* RegisteredCleanupExecutor.swift in Sources */,
+				025E1CDA3F0E50327C17C1A2 /* StorageScanCatalog.swift in Sources */,
+				B7F298EBECAF067CC569B9BF /* CleanupConfirmationView.swift in Sources */,
+				8CB2328ACA78663834EF0BCF /* CleanSpaceMenuBarView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E71C0CF657B745C956439A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFEEAC236E661BC62BFFBE9E /* CleanSpaceStoreApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6EC8D9DB9F6DF5B72C78D83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7529B0229032AD3F788D7384 /* StorageSemanticsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		03EAF2EBBE3D4746F515D190 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CleanSpaceDirect;
+			target = CEB9F2514947CF37CDA048F0 /* CleanSpaceDirect */;
+			targetProxy = 116B5B95CA05093DCAB5AE0F /* PBXContainerItemProxy */;
+		};
+		7AE9EC342D3656D412AA53B3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CleanSpaceCore;
+			target = 3495EB68B673F7F07052A70E /* CleanSpaceCore */;
+			targetProxy = 25BA77D8649329BCA5239916 /* PBXContainerItemProxy */;
+		};
+		CC5881624E29C015E9B3D4A2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CleanSpaceCore;
+			target = 3495EB68B673F7F07052A70E /* CleanSpaceCore */;
+			targetProxy = D55A7D723551686E0419B1F6 /* PBXContainerItemProxy */;
+		};
+		E25D3FA0AB867CBEC1DB7A4E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CleanSpaceCore;
+			target = 3495EB68B673F7F07052A70E /* CleanSpaceCore */;
+			targetProxy = B929A0F29215203DF72667EF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		123A35D3F76C404A163075C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B52A0B974A1623CA6592E00E /* Shared.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Configurations/CleanSpaceStore.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Distribution";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = CleanSpace;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 0.1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cleanspace.store;
+				PRODUCT_NAME = "CleanSpace Store";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		1D381600FDF1D4383C9E3EBF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B52A0B974A1623CA6592E00E /* Shared.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cleanspace.core-tests";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CleanSpace.app/Contents/MacOS/CleanSpace";
+			};
+			name = Release;
+		};
+		1FCD482E5C72DC42F88CCCC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B52A0B974A1623CA6592E00E /* Shared.xcconfig */;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				EXECUTABLE_PREFIX = lib;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cleanspace.core;
+				PRODUCT_MODULE_NAME = CleanSpaceCore;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		358C1D342652AC45992E7354 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B52A0B974A1623CA6592E00E /* Shared.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		6544246AB8DB1BF8F4F031B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B52A0B974A1623CA6592E00E /* Shared.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cleanspace.core-tests";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CleanSpace.app/Contents/MacOS/CleanSpace";
+			};
+			name = Debug;
+		};
+		96C1C30C92189070CBDADBEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B52A0B974A1623CA6592E00E /* Shared.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B6524BFBECE27487BBF35DCC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B52A0B974A1623CA6592E00E /* Shared.xcconfig */;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				EXECUTABLE_PREFIX = lib;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cleanspace.core;
+				PRODUCT_MODULE_NAME = CleanSpaceCore;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		DA60A4186324EB3C19753CB5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B52A0B974A1623CA6592E00E /* Shared.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Configurations/CleanSpaceDirect.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "CleanSpace Direct";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 0.1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cleanspace.direct;
+				PRODUCT_NAME = CleanSpace;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		DCE2FFCF9FE9FB7AFB470C06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B52A0B974A1623CA6592E00E /* Shared.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Configurations/CleanSpaceStore.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = CleanSpace;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 0.1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cleanspace.store;
+				PRODUCT_NAME = "CleanSpace Store";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		E6D4D3061637DF40B2BCA8BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B52A0B974A1623CA6592E00E /* Shared.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Configurations/CleanSpaceDirect.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "CleanSpace Direct";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 0.1.1;
+				OTHER_CODE_SIGN_FLAGS = "--requirements $(PROJECT_DIR)/Configurations/CleanSpaceDirectDebug.requirements";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cleanspace.direct;
+				PRODUCT_NAME = CleanSpace;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		27EA68030885C9175480D142 /* Build configuration list for PBXNativeTarget "CleanSpaceStore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				123A35D3F76C404A163075C0 /* Release */,
+				DCE2FFCF9FE9FB7AFB470C06 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		96D7DFB9739618DB42474F24 /* Build configuration list for PBXProject "CleanSpace" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96C1C30C92189070CBDADBEC /* Debug */,
+				358C1D342652AC45992E7354 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C4DD4F7D63588993A767E703 /* Build configuration list for PBXNativeTarget "CleanSpaceDirect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA60A4186324EB3C19753CB5 /* Release */,
+				E6D4D3061637DF40B2BCA8BF /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB6C9400933BE9A6B1B6082D /* Build configuration list for PBXNativeTarget "CleanSpaceCoreTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D381600FDF1D4383C9E3EBF /* Release */,
+				6544246AB8DB1BF8F4F031B9 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E34EE8BB3EAC00017A807203 /* Build configuration list for PBXNativeTarget "CleanSpaceCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1FCD482E5C72DC42F88CCCC2 /* Release */,
+				B6524BFBECE27487BBF35DCC /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C469952DC44C931755BE874D /* Project object */;
+}
