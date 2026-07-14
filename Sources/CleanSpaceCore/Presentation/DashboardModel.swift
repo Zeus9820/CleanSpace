@@ -19,6 +19,13 @@ public struct CleanupPlanSummary: Equatable, Sendable {
     }
 }
 
+public enum SnapshotInspectionState: Equatable, Sendable {
+    case inspecting
+    case available(count: Int)
+    case unsupported
+    case failed(String)
+}
+
 @MainActor
 public final class DashboardModel: ObservableObject {
     @Published public private(set) var capacity: VolumeCapacity?
@@ -29,6 +36,7 @@ public final class DashboardModel: ObservableObject {
     @Published public private(set) var lastScan: Date?
     @Published public private(set) var shelfState: CleanupShelfState = .scanning
     @Published public private(set) var accessState: StorageAccessState
+    @Published public private(set) var snapshotInspection: SnapshotInspectionState
     @Published public var selectedCategory: StorageCategory?
     @Published public var inspectorPresented = false
     @Published public var confirmationPresented = false
@@ -38,6 +46,7 @@ public final class DashboardModel: ObservableObject {
     private let accessProvider: any StorageAccessProviding
     private let cleanupExecutor: any CleanupExecuting
     private let workspaceRevealer: any WorkspaceRevealing
+    private let snapshotInspector: any SnapshotInspecting
     private var scanTask: Task<Void, Never>?
     private var cleanupTask: Task<Void, Never>?
     private var resultAfterScan: CleanupResult?
@@ -48,6 +57,8 @@ public final class DashboardModel: ObservableObject {
         accessProvider = environment.accessProvider
         cleanupExecutor = environment.cleanupExecutor
         workspaceRevealer = environment.workspaceRevealer
+        snapshotInspector = environment.snapshotInspector
+        snapshotInspection = environment.capabilities.canInspectSnapshots ? .inspecting : .unsupported
         accessState = environment.profile == .direct
             ? .notRequired(FileManager.default.homeDirectoryForCurrentUser)
             : .selectionRequired
@@ -70,6 +81,7 @@ public final class DashboardModel: ObservableObject {
         coverageIssues = []
         lastScan = nil
         shelfState = .scanning
+        inspectSnapshots(on: volume)
         scanTask = Task { [scanner] in
             do {
                 for try await event in scanner.scan(volume: volume) {
@@ -79,6 +91,25 @@ public final class DashboardModel: ObservableObject {
             } catch {
                 coverageIssues.append(.init(root: volume, errorDescription: error.localizedDescription))
                 shelfState = .ready
+            }
+        }
+    }
+
+    private func inspectSnapshots(on volume: URL) {
+        guard profile == .direct else {
+            snapshotInspection = .unsupported
+            return
+        }
+        snapshotInspection = .inspecting
+        Task { [snapshotInspector] in
+            do {
+                if let count = try await snapshotInspector.localSnapshotCount(on: volume) {
+                    snapshotInspection = .available(count: count)
+                } else {
+                    snapshotInspection = .unsupported
+                }
+            } catch {
+                snapshotInspection = .failed(error.localizedDescription)
             }
         }
     }

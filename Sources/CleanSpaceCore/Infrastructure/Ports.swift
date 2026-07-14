@@ -49,3 +49,4 @@ public protocol ApplicationDiscovering: Sendable { func isRunning(bundleIdentifi
 public protocol SnapshotInspecting: Sendable { func localSnapshotCount(on volume: URL) async throws -> Int? }
 public protocol WorkspaceRevealing: Sendable { func reveal(_ url: URL) async }
 public protocol TrashMoving: Sendable { func moveToTrash(_ url: URL) async throws -> URL }
+public protocol PermanentDeleting: Sendable { func permanentlyDelete(_ url: URL) async throws }

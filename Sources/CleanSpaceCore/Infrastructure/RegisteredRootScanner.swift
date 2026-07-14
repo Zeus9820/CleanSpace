@@ -6,19 +6,25 @@ public struct RegisteredRootScanner: StorageScanning {
     private let home: URL
     private let maximumConcurrentMeasurements: Int
     private let includeProtectedAppData: Bool
+    private let applicationDiscoverer: any ApplicationDiscovering
+    private let activityEvidenceProvider: ModelActivityEvidenceProvider
 
     public init(
         capacityProvider: any VolumeCapacityProviding,
         catalog: StorageScanCatalog = .standard,
         home: URL = FileManager.default.homeDirectoryForCurrentUser,
         maximumConcurrentMeasurements: Int = 4,
-        includeProtectedAppData: Bool = false
+        includeProtectedAppData: Bool = false,
+        applicationDiscoverer: any ApplicationDiscovering = UnavailableApplicationDiscoverer(),
+        activityEvidenceProvider: ModelActivityEvidenceProvider = .init()
     ) {
         self.capacityProvider = capacityProvider
         self.catalog = catalog
         self.home = home.standardizedFileURL
         self.maximumConcurrentMeasurements = max(1, maximumConcurrentMeasurements)
         self.includeProtectedAppData = includeProtectedAppData
+        self.applicationDiscoverer = applicationDiscoverer
+        self.activityEvidenceProvider = activityEvidenceProvider
     }
 
     public func scan(volume: URL) -> AsyncThrowingStream<ScanEvent, Error> {
@@ -62,13 +68,15 @@ public struct RegisteredRootScanner: StorageScanning {
                                     result.issues.forEach { continuation.yield(.coverageIssue($0)) }
                                     guard result.bytes > 0 else { continue }
                                     categoryBytes += result.bytes
-                                    categoryItems.append(makeItem(
+                                    categoryItems.append(await makeItem(
                                         result.url,
                                         displayName: result.displayName,
                                         bytes: result.bytes,
                                         location: location
                                     ))
                                 }
+                            } catch is CancellationError {
+                                throw CancellationError()
                             } catch {
                                 coverageComplete = false
                                 continuation.yield(.coverageIssue(.init(
@@ -102,7 +110,7 @@ public struct RegisteredRootScanner: StorageScanning {
         let root = location.root(in: home)
         let exclusions = exclusions(for: location)
         if location.aggregateAsSingleItem {
-            let result = measure(
+            let result = try measure(
                 root,
                 expectedVolume: expectedVolume,
                 exclusions: exclusions,
@@ -124,7 +132,7 @@ public struct RegisteredRootScanner: StorageScanning {
             for _ in 0..<min(maximumConcurrentMeasurements, children.count) {
                 guard let child = iterator.next() else { break }
                 group.addTask(priority: .utility) {
-                    let result = measure(
+                    let result = try measure(
                         child,
                         expectedVolume: expectedVolume,
                         exclusions: exclusions,
@@ -139,7 +147,7 @@ public struct RegisteredRootScanner: StorageScanning {
                 results.append(result)
                 if let child = iterator.next() {
                     group.addTask(priority: .utility) {
-                        let measured = measure(
+                        let measured = try measure(
                             child,
                             expectedVolume: expectedVolume,
                             exclusions: exclusions,
@@ -166,10 +174,17 @@ public struct RegisteredRootScanner: StorageScanning {
         return Array(Dictionary(grouping: all, by: { $0.standardizedFileURL.path }).values.compactMap(\.first))
     }
 
-    private func makeItem(_ url: URL, displayName: String, bytes: Int64, location: StorageScanLocation) -> StorageItem {
-        let activity: ModelActivityEvidence? = location.category == .modelCaches
-            ? modificationEvidence(for: url)
-            : nil
+    private func makeItem(_ url: URL, displayName: String, bytes: Int64, location: StorageScanLocation) async -> StorageItem {
+        let activity = location.modelSignature.map { activityEvidenceProvider.evidence(for: url, signature: $0) }
+        let relatedApplication: RelatedApplication?
+        if let bundleIdentifier = location.relatedBundleIdentifier {
+            relatedApplication = .init(
+                bundleIdentifier: bundleIdentifier,
+                isRunning: await applicationDiscoverer.isRunning(bundleIdentifier: bundleIdentifier)
+            )
+        } else {
+            relatedApplication = nil
+        }
         return StorageItem(
             id: "\(location.id):\(url.standardizedFileURL.path)",
             displayName: displayName,
@@ -182,6 +197,7 @@ public struct RegisteredRootScanner: StorageScanning {
             safety: location.safety,
             action: location.action,
             activity: activity,
+            relatedApplication: relatedApplication,
             cleanupRuleID: location.action == .revealOnly ? nil : location.id,
             consequence: location.consequence,
             regenerationCost: location.regenerationCost,
@@ -189,19 +205,13 @@ public struct RegisteredRootScanner: StorageScanning {
         )
     }
 
-    private func modificationEvidence(for url: URL) -> ModelActivityEvidence {
-        guard let date = try? url.resourceValues(forKeys: [.contentModificationDateKey]).contentModificationDate else {
-            return .unknown
-        }
-        return .modification(date: date)
-    }
-
     private func measure(
         _ root: URL,
         expectedVolume: String?,
         exclusions: [URL],
         seenFileIdentifiers: FileIdentityRegistry
-    ) -> (bytes: Int64, issues: [ScanCoverageIssue]) {
+    ) throws -> (bytes: Int64, issues: [ScanCoverageIssue]) {
+        try Task.checkCancellation()
         let keys: Set<URLResourceKey> = [
             .isRegularFileKey, .isDirectoryKey, .isSymbolicLinkKey,
             .fileAllocatedSizeKey, .totalFileAllocatedSizeKey,
@@ -212,9 +222,11 @@ public struct RegisteredRootScanner: StorageScanning {
             return (0, [])
         }
         if let values = try? root.resourceValues(forKeys: keys), values.isRegularFile == true {
-            guard values.isSymbolicLink != true else { return (0, []) }
-            if let expectedVolume, let found = values.volumeIdentifier,
-               expectedVolume != String(describing: found) {
+            guard Self.shouldMeasure(
+                isSymbolicLink: values.isSymbolicLink == true,
+                expectedVolume: expectedVolume,
+                foundVolume: values.volumeIdentifier.map { String(describing: $0) }
+            ) else {
                 return (0, [])
             }
             if let identifier = values.fileResourceIdentifier {
@@ -236,19 +248,18 @@ public struct RegisteredRootScanner: StorageScanning {
 
         var total: Int64 = 0
         for case let url as URL in enumerator {
-            if Task.isCancelled { break }
+            try Task.checkCancellation()
             if exclusions.contains(where: { containsOrEquals($0, url) }) {
                 enumerator.skipDescendants()
                 continue
             }
             do {
                 let values = try url.resourceValues(forKeys: keys)
-                if values.isSymbolicLink == true {
-                    enumerator.skipDescendants()
-                    continue
-                }
-                if let expectedVolume, let found = values.volumeIdentifier,
-                   expectedVolume != String(describing: found) {
+                guard Self.shouldMeasure(
+                    isSymbolicLink: values.isSymbolicLink == true,
+                    expectedVolume: expectedVolume,
+                    foundVolume: values.volumeIdentifier.map { String(describing: $0) }
+                ) else {
                     enumerator.skipDescendants()
                     continue
                 }
@@ -263,6 +274,18 @@ public struct RegisteredRootScanner: StorageScanning {
             }
         }
         return (total, issues)
+    }
+
+    /// Kept as a pure policy so mounted-volume handling can be verified without
+    /// mounting a volume or touching the real user's filesystem in tests.
+    static func shouldMeasure(
+        isSymbolicLink: Bool,
+        expectedVolume: String?,
+        foundVolume: String?
+    ) -> Bool {
+        guard !isSymbolicLink else { return false }
+        guard let expectedVolume, let foundVolume else { return true }
+        return expectedVolume == foundVolume
     }
 
     private func containsOrEquals(_ root: URL, _ candidate: URL) -> Bool {

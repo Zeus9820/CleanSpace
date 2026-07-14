@@ -5,18 +5,27 @@ public struct RegisteredCleanupExecutor: CleanupExecuting {
     private let rules: [String: CleanupRule]
     private let capacityProvider: any VolumeCapacityProviding
     private let volume: URL
+    private let permanentDeleter: any PermanentDeleting
+    private let trashMover: any TrashMoving
+    private let applicationDiscoverer: any ApplicationDiscovering
 
     public init(
         profile: DistributionProfile,
         home: URL = FileManager.default.homeDirectoryForCurrentUser,
         catalog: StorageScanCatalog = .standard,
         capacityProvider: any VolumeCapacityProviding,
-        volume: URL = URL(filePath: "/", directoryHint: .isDirectory)
+        volume: URL = URL(filePath: "/", directoryHint: .isDirectory),
+        permanentDeleter: any PermanentDeleting = FoundationPermanentDeleter(),
+        trashMover: any TrashMoving = FoundationTrashMover(),
+        applicationDiscoverer: any ApplicationDiscovering = FoundationApplicationDiscoverer()
     ) {
         self.profile = profile
         self.rules = Dictionary(uniqueKeysWithValues: catalog.cleanupRules(home: home, profile: profile).map { ($0.id, $0) })
         self.capacityProvider = capacityProvider
         self.volume = volume
+        self.permanentDeleter = permanentDeleter
+        self.trashMover = trashMover
+        self.applicationDiscoverer = applicationDiscoverer
     }
 
     public func execute(_ plan: CleanupPlan) async -> CleanupResult {
@@ -25,10 +34,12 @@ public struct RegisteredCleanupExecutor: CleanupExecuting {
         var estimatedPermanentBytes: Int64 = 0
         var failures: [CleanupFailure] = []
 
-        for item in plan.items {
+        for (index, item) in plan.items.enumerated() {
             guard !Task.isCancelled else {
-                failures.append(.init(id: item.id, itemName: item.displayName, reason: "Cleanup was cancelled"))
-                continue
+                failures.append(contentsOf: plan.items[index...].map {
+                    .init(id: $0.id, itemName: $0.displayName, reason: "Cleanup was cancelled before this item was changed")
+                })
+                break
             }
             guard let ruleID = item.cleanupRuleID,
                   let rule = rules[ruleID],
@@ -39,14 +50,30 @@ public struct RegisteredCleanupExecutor: CleanupExecuting {
                 continue
             }
 
+            if item.safety == .requiresApplicationClosed {
+                guard let bundleIdentifier = item.relatedApplication?.bundleIdentifier else {
+                    failures.append(.init(
+                        id: item.id, itemName: item.displayName,
+                        reason: "CleanSpace could not identify the related application to verify that it is closed"
+                    ))
+                    continue
+                }
+                if await applicationDiscoverer.isRunning(bundleIdentifier: bundleIdentifier) {
+                    failures.append(.init(
+                        id: item.id, itemName: item.displayName,
+                        reason: "Quit the related application before moving its data to Trash"
+                    ))
+                    continue
+                }
+            }
+
             do {
                 switch item.action {
                 case .permanentlyDelete:
                     estimatedPermanentBytes += item.reclaimable.bytes ?? 0
-                    try FileManager.default.removeItem(at: item.path)
+                    try await permanentDeleter.permanentlyDelete(item.path)
                 case .moveToTrash:
-                    var resultingURL: NSURL?
-                    try FileManager.default.trashItem(at: item.path, resultingItemURL: &resultingURL)
+                    _ = try await trashMover.moveToTrash(item.path)
                     movedBytes += item.size.bytes ?? 0
                 case .revealOnly:
                     throw CleanupExecutionError.revealOnly

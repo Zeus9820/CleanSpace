@@ -1,0 +1,31 @@
+name: CleanSpace CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: macos-26
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify Xcode 26
+        run: xcodebuild -version | grep 'Xcode 26'
+      - name: Swift package tests
+        run: swift test
+      - name: Direct build
+        run: xcodebuild -project CleanSpace.xcodeproj -scheme CleanSpaceDirect -configuration Release CODE_SIGNING_ALLOWED=NO build
+      - name: Store build
+        run: xcodebuild -project CleanSpace.xcodeproj -scheme CleanSpaceStore -configuration Release CODE_SIGNING_ALLOWED=NO build
+      - name: Direct unsigned archive
+        run: xcodebuild -project CleanSpace.xcodeproj -scheme CleanSpaceDirect -archivePath "$RUNNER_TEMP/CleanSpaceDirect.xcarchive" CODE_SIGNING_ALLOWED=NO archive
+      - name: Store unsigned archive
+        run: xcodebuild -project CleanSpace.xcodeproj -scheme CleanSpaceStore -archivePath "$RUNNER_TEMP/CleanSpaceStore.xcarchive" CODE_SIGNING_ALLOWED=NO archive
+      - name: Verify test fixtures never resolve the real Home directory
+        run: |
+          if rg 'homeDirectoryForCurrentUser' Tests; then
+            echo 'Tests must inject a temporary or synthetic Home directory.' >&2
+            exit 1
+          fi

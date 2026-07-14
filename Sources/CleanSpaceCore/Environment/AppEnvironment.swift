@@ -26,8 +26,9 @@ public struct AppEnvironment: Sendable {
     public let accessProvider: any StorageAccessProviding
     public let cleanupExecutor: any CleanupExecuting
     public let workspaceRevealer: any WorkspaceRevealing
+    public let snapshotInspector: any SnapshotInspecting
 
-    public init(profile: DistributionProfile, capabilities: DistributionCapabilities, scanner: any StorageScanning, capacityProvider: any VolumeCapacityProviding, accessProvider: any StorageAccessProviding, cleanupExecutor: any CleanupExecuting, workspaceRevealer: any WorkspaceRevealing) {
+    public init(profile: DistributionProfile, capabilities: DistributionCapabilities, scanner: any StorageScanning, capacityProvider: any VolumeCapacityProviding, accessProvider: any StorageAccessProviding, cleanupExecutor: any CleanupExecuting, workspaceRevealer: any WorkspaceRevealing, snapshotInspector: any SnapshotInspecting = UnsupportedSnapshotInspector()) {
         self.profile = profile
         self.capabilities = capabilities
         self.scanner = scanner
@@ -35,6 +36,7 @@ public struct AppEnvironment: Sendable {
         self.accessProvider = accessProvider
         self.cleanupExecutor = cleanupExecutor
         self.workspaceRevealer = workspaceRevealer
+        self.snapshotInspector = snapshotInspector
     }
 
     @MainActor
@@ -50,12 +52,14 @@ public struct AppEnvironment: Sendable {
             ),
             scanner: RegisteredRootScanner(
                 capacityProvider: capacity,
-                includeProtectedAppData: canScanProtectedAppData
+                includeProtectedAppData: canScanProtectedAppData,
+                applicationDiscoverer: FoundationApplicationDiscoverer()
             ),
             capacityProvider: capacity,
             accessProvider: profile == .direct ? DirectStorageAccessProvider() : SecurityScopedHomeAccessProvider(),
             cleanupExecutor: RegisteredCleanupExecutor(profile: profile, capacityProvider: capacity),
-            workspaceRevealer: FoundationWorkspaceRevealer()
+            workspaceRevealer: FoundationWorkspaceRevealer(),
+            snapshotInspector: profile == .direct ? DirectSnapshotInspector() : UnsupportedSnapshotInspector()
         )
     }
 

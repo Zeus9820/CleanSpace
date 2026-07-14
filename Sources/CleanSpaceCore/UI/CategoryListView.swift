@@ -88,6 +88,8 @@ struct CategoryListView: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+        .accessibilityIdentifier("storage.category.\(category.rawValue)")
+        .accessibilityLabel("\(category.title), \(StorageFormatting.measurement(measurements[category]))")
         .accessibilityHint("Shows details in the inspector")
     }
 

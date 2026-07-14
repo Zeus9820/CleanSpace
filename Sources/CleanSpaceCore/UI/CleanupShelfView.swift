@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct CleanupShelfView: View {
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     let state: CleanupShelfState
     let capacity: VolumeCapacity?
     let reclaimableEstimate: Int64
@@ -9,16 +10,27 @@ struct CleanupShelfView: View {
     @Namespace private var glassNamespace
 
     var body: some View {
-        GlassEffectContainer(spacing: 18) {
-            shelfContent
-                .padding(.horizontal, 18)
-                .frame(height: 64)
-                .glassEffect(.regular, in: .rect(cornerRadius: 20))
-                .glassEffectID(stateID, in: glassNamespace)
-                .glassEffectTransition(.matchedGeometry)
+        Group {
+            if reduceTransparency {
+                shelfContent
+                    .padding(.horizontal, 18)
+                    .frame(height: 64)
+                    .background(Color(nsColor: .controlBackgroundColor), in: RoundedRectangle(cornerRadius: 20))
+                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.primary.opacity(0.18)))
+            } else {
+                GlassEffectContainer(spacing: 18) {
+                    shelfContent
+                        .padding(.horizontal, 18)
+                        .frame(height: 64)
+                        .glassEffect(.regular, in: .rect(cornerRadius: 20))
+                        .glassEffectID(stateID, in: glassNamespace)
+                        .glassEffectTransition(.matchedGeometry)
+                }
+            }
         }
         .padding(.horizontal, 24)
         .padding(.bottom, 16)
+        .accessibilityIdentifier("cleanup.shelf.\(stateID)")
     }
 
     @ViewBuilder

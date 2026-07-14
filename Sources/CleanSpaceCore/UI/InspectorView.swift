@@ -6,6 +6,7 @@ struct InspectorView: View {
     let items: [StorageItem]
     let selectedItemIDs: Set<String>
     let coverageIssues: [ScanCoverageIssue]
+    let snapshotInspection: SnapshotInspectionState
     let toggleSelection: (StorageItem) -> Void
     let reveal: (StorageItem) -> Void
 
@@ -17,6 +18,9 @@ struct InspectorView: View {
                     measurementSection(category)
                     Divider()
                     explanationSection(category)
+                    if category == .systemUnclassified {
+                        snapshotSection
+                    }
                     if !items.isEmpty {
                         Divider()
                         contributorsSection
@@ -33,6 +37,27 @@ struct InspectorView: View {
             .padding(20)
         }
         .background(.clear)
+        .accessibilityIdentifier("storage.inspector")
+    }
+
+    private var snapshotSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Local APFS Snapshots").font(.headline)
+            switch snapshotInspection {
+            case .inspecting:
+                Label("Inspecting presence…", systemImage: "clock")
+            case .available(let count):
+                Label("\(count) local snapshot\(count == 1 ? "" : "s") detected", systemImage: "camera.on.rectangle")
+                Text("Snapshot size is unavailable and is not included as a measured category.")
+                    .font(.caption).foregroundStyle(.secondary)
+            case .unsupported:
+                Label("Snapshot inspection is unsupported in this distribution.", systemImage: "nosign")
+            case .failed(let reason):
+                Label("Snapshot presence unavailable", systemImage: "exclamationmark.triangle")
+                Text(reason).font(.caption).foregroundStyle(.secondary)
+            }
+        }
+        .font(.callout)
     }
 
     private var contributorsSection: some View {
@@ -64,6 +89,7 @@ struct InspectorView: View {
                     .buttonStyle(.plain)
                     .foregroundStyle(selectedItemIDs.contains(item.id) ? Color.accentColor : Color.secondary)
                     .accessibilityLabel(selectedItemIDs.contains(item.id) ? "Deselect \(item.displayName)" : "Select \(item.displayName)")
+                    .accessibilityIdentifier("cleanup.selection.\(item.id)")
                 } else {
                     Image(systemName: "eye")
                         .foregroundStyle(.secondary)
@@ -86,6 +112,8 @@ struct InspectorView: View {
                 }
                 .buttonStyle(.borderless)
                 .help("Reveal in Finder")
+                .accessibilityLabel("Reveal \(item.displayName) in Finder")
+                .accessibilityIdentifier("storage.reveal.\(item.id)")
             }
 
             HStack(spacing: 6) {
@@ -158,6 +186,8 @@ struct InspectorView: View {
                     .foregroundStyle(.secondary)
             }
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(category.title), \(StorageFormatting.measurement(measurement))")
     }
 
     private func explanationSection(_ category: StorageCategory) -> some View {

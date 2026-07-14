@@ -25,6 +25,7 @@ public struct CleanSpaceRootView: View {
                 items: model.selectedCategory.flatMap { model.itemsByCategory[$0] } ?? [],
                 selectedItemIDs: model.selectedItemIDs,
                 coverageIssues: model.coverageIssues,
+                snapshotInspection: model.snapshotInspection,
                 toggleSelection: model.toggleSelection,
                 reveal: model.reveal
             )
@@ -46,6 +47,7 @@ public struct CleanSpaceRootView: View {
             )
         }
         .task { model.prepareInitialAccess() }
+        .accessibilityIdentifier("dashboard.root")
     }
 
     @ViewBuilder
@@ -73,6 +75,7 @@ public struct CleanSpaceRootView: View {
         }
         .scrollIndicators(.automatic)
         .background(Color(nsColor: .windowBackgroundColor))
+        .accessibilityIdentifier("dashboard.overview")
     }
 
     private var selectedCategoryContent: some View {
@@ -105,6 +108,7 @@ public struct CleanSpaceRootView: View {
                     items: model.selectedCategory.flatMap { model.itemsByCategory[$0] } ?? [],
                     selectedItemIDs: model.selectedItemIDs,
                     coverageIssues: model.coverageIssues,
+                    snapshotInspection: model.snapshotInspection,
                     toggleSelection: model.toggleSelection,
                     reveal: model.reveal
                 )
@@ -113,6 +117,7 @@ public struct CleanSpaceRootView: View {
             }
         }
         .background(Color(nsColor: .windowBackgroundColor))
+        .accessibilityIdentifier("dashboard.categoryDetail")
     }
 
     private var overviewHeader: some View {
@@ -155,7 +160,7 @@ public struct CleanSpaceRootView: View {
                 select: model.select
             )
         } label: {
-            Label("Storage Overview", systemImage: "chart.donut")
+            Label("Storage Overview", systemImage: "chart.pie.fill")
                 .font(.headline)
         }
         .groupBoxStyle(.automatic)
@@ -280,6 +285,7 @@ public struct CleanSpaceRootView: View {
             }
         }
         .background(.bar)
+        .accessibilityIdentifier("dashboard.sidebar")
     }
 
     @ViewBuilder
@@ -373,6 +379,7 @@ public struct CleanSpaceRootView: View {
             }
             .disabled(model.accessState.accessibleRoot == nil)
             .keyboardShortcut("r", modifiers: .command)
+            .accessibilityIdentifier("toolbar.rescan")
 
             Button {
                 if model.selectedCategory == nil { showMostRelevantDetails() }
@@ -381,6 +388,7 @@ public struct CleanSpaceRootView: View {
                 Label("Inspector", systemImage: "sidebar.right")
             }
             .keyboardShortcut("i", modifiers: [.command, .option])
+            .accessibilityIdentifier("toolbar.inspector")
 
             Button { infoPresented.toggle() } label: {
                 Label("About CleanSpace", systemImage: "info.circle")
@@ -388,6 +396,7 @@ public struct CleanSpaceRootView: View {
             .popover(isPresented: $infoPresented, arrowEdge: .bottom) {
                 informationPopover
             }
+            .accessibilityIdentifier("toolbar.information")
         }
     }
 

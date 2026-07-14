@@ -2,10 +2,14 @@ import AppKit
 import Foundation
 
 public struct DirectStorageAccessProvider: StorageAccessProviding {
-    public init() {}
+    private let home: URL
+
+    public init(home: URL = FileManager.default.homeDirectoryForCurrentUser) {
+        self.home = home
+    }
 
     public func restoreAccess() -> StorageAccessState {
-        .notRequired(FileManager.default.homeDirectoryForCurrentUser)
+        .notRequired(home)
     }
 
     public func requestAccess() async -> StorageAccessState {

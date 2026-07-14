@@ -94,6 +94,16 @@ public enum ModelActivityEvidence: Equatable, Sendable, Codable {
     }
 }
 
+public struct RelatedApplication: Equatable, Sendable {
+    public let bundleIdentifier: String
+    public let isRunning: Bool
+
+    public init(bundleIdentifier: String, isRunning: Bool) {
+        self.bundleIdentifier = bundleIdentifier
+        self.isRunning = isRunning
+    }
+}
+
 public struct StorageItem: Identifiable, Equatable, Sendable {
     public let id: String
     public let displayName: String
@@ -104,6 +114,7 @@ public struct StorageItem: Identifiable, Equatable, Sendable {
     public let safety: CleanupSafety
     public let action: CleanupAction
     public let activity: ModelActivityEvidence?
+    public let relatedApplication: RelatedApplication?
     public let cleanupRuleID: String?
     public let consequence: String
     public let regenerationCost: String
@@ -119,6 +130,7 @@ public struct StorageItem: Identifiable, Equatable, Sendable {
         safety: CleanupSafety,
         action: CleanupAction,
         activity: ModelActivityEvidence? = nil,
+        relatedApplication: RelatedApplication? = nil,
         cleanupRuleID: String? = nil,
         consequence: String = "Review this location before taking action.",
         regenerationCost: String = "Unknown",
@@ -133,6 +145,7 @@ public struct StorageItem: Identifiable, Equatable, Sendable {
         self.safety = safety
         self.action = action
         self.activity = activity
+        self.relatedApplication = relatedApplication
         self.cleanupRuleID = cleanupRuleID
         self.consequence = consequence
         self.regenerationCost = regenerationCost

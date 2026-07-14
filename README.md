@@ -13,15 +13,17 @@ This repository currently contains a buildable foundation slice:
 - Store Home-folder selection with a persisted security-scoped bookmark and visible denied/stale/restored states
 - injected distribution capabilities through `AppEnvironment`
 - immediate Foundation volume-capacity reporting
-- cancellation-aware background scans of the registered user cache and Trash roots
+- bounded, cancellation-aware scans with hard-link deduplication, symlink exclusion, volume-boundary checks, overlap exclusion, and file-race recovery
 - item-level scans of registered developer caches, AI/model caches, device backups, Application Support, Containers, Xcode data, and major personal folders
 - safe cache preselection, model/backup/Trash opt-in selection, and reveal-only unknown application or personal data
-- rule-validated permanent deletion and move-to-Trash execution with explicit confirmation totals
+- injected, rule-validated permanent deletion and move-to-Trash execution with explicit confirmation totals and related-app running checks
 - post-cleanup capacity remeasurement and APFS estimate-difference explanations
 - progressive ring replacement and a derived `System & Unclassified` residual
-- contextual inspector, incomplete-scan reporting, and a state-driven glass cleanup shelf
+- versioned local model signatures with sourced Last activity evidence
+- Direct read-only APFS snapshot count reporting (bytes unavailable) and explicit Store unsupported state
+- contextual inspector, incomplete-scan reporting, reduced-effects fallbacks, VoiceOver identifiers, and a state-driven glass cleanup shelf
 - required-reason privacy manifests for displayed disk-capacity information
-- contract tests for residual semantics, coverage, cleanup totals, and path containment
+- contract tests for residual semantics, progressive state, coverage, cleanup routing, path containment, model activity, snapshots, scanner races, and system-color contrast
 
 Cleanup is available only for items produced by the versioned local catalog. Every operation must match its registered rule identifier, distribution profile, action, and allowed-root containment. Unknown Application Support, Containers, and personal files remain reveal-only.
 
@@ -45,12 +47,16 @@ The project requires Xcode 26 and macOS 26. `Package.swift` remains available as
 
 The script creates `dist/CleanSpace-<version>.dmg` containing CleanSpace and an Applications shortcut. When a Developer ID Application identity is installed, the script signs the application and disk image automatically. Set `NOTARY_PROFILE` to a `notarytool` keychain profile to submit and staple the disk image. Without a Developer ID identity, the script produces an ad-hoc-signed image suitable for local installation and testing only. Local builds use a stable designated requirement so macOS permission decisions survive rebuilds with the same bundle identifier.
 
-## Next implementation gates
+## Remaining distribution gates
 
-1. Extract and test the bounded file-tree aggregation engine with hard-link, symlink, overlap, mounted-volume, cancellation, and file-race fixtures.
-2. Add the versioned cleanup and model-signature registries, recognized-item discovery, and application-running checks.
-3. Implement permanent-delete and Trash adapters behind validated cleanup plans, then capacity-before/after result measurement.
-4. Add snapshot, UI, accessibility, contrast, large-fixture performance, archive, signing, and notarization verification.
+The non-signing implementation gates are complete. Remaining release work requires organization-owned Apple distribution credentials:
+
+1. Set the final Team ID and bundle identifiers.
+2. Build and archive with a Developer ID Application identity.
+3. Notarize and staple the Direct disk image, then validate it with Gatekeeper on a clean Mac.
+4. Produce the App Store archive with Apple Distribution and complete App Review submission metadata.
+
+Run `Tools/create-performance-fixture.sh` for the opt-in 100,001-file / 501 GB sparse profiling fixture. See `Documentation/PerformanceVerification.md` for the Instruments checklist.
 
 ## Safety invariants already encoded
 

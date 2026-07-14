@@ -14,6 +14,8 @@
 		0E74F6F5D33ADBF2D5AECC81 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 623EE353D4F5F1FD40D27AF0 /* Cocoa.framework */; };
 		0FC0A8B938A36838C95F4B4C /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A01CDFCA2E385B78E95AE /* DashboardModel.swift */; };
 		20AB1DD9F262617956B7AEBF /* CleanSpaceDirectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49A1143C2719009C43B1279 /* CleanSpaceDirectApp.swift */; };
+		20D024D021D14C7861A73DFF /* ScannerRobustnessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB25668259258607BBBA8223 /* ScannerRobustnessTests.swift */; };
+		23B7DC514E71DC59715C333B /* SnapshotInspectors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0267B60C9080F86B7C8774F2 /* SnapshotInspectors.swift */; };
 		3116D2110B1CFB9918C6B636 /* RegisteredRootScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F7F83483A46209E9E133A /* RegisteredRootScanner.swift */; };
 		42DCE7FDDC43278EBD6BD17A /* CleanSpaceRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0AAA594E3F314AB36BBE28 /* CleanSpaceRootView.swift */; };
 		43B5D5C20376CE50A46CA107 /* CleanupShelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9235766A3F52DA8296520BBF /* CleanupShelfView.swift */; };
@@ -21,15 +23,18 @@
 		4A4DDF7C5781C2A53EE23D93 /* libCleanSpaceCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F515DEC444E42FA61DA807F /* libCleanSpaceCore.a */; };
 		4EA4591247B2C03C844EA78A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76B95F59DB4848FBB4D88454 /* Assets.xcassets */; };
 		5AA763D1919C484732278777 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 61CC38275AC5C6F1679AE422 /* PrivacyInfo.xcprivacy */; };
+		66DEF474C10F206A3127C22D /* CleanupExecutorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C066AF045C8475034F5BC /* CleanupExecutorTests.swift */; };
 		6C33D014CD09680ACB474D11 /* FoundationWorkspaceRevealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C891C8B1E5FA31831F8E7AE /* FoundationWorkspaceRevealer.swift */; };
 		7144CEE01AC8C6DFDBC16DE3 /* StorageModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03322EB3E21E7773504B5A7F /* StorageModels.swift */; };
 		7529B0229032AD3F788D7384 /* StorageSemanticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D5DEE1FDACD2B519F4480 /* StorageSemanticsTests.swift */; };
 		7BBD459F5BF6805CF0D52FAD /* libCleanSpaceCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F515DEC444E42FA61DA807F /* libCleanSpaceCore.a */; };
 		85C3AAD925CF1599E8903163 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 623EE353D4F5F1FD40D27AF0 /* Cocoa.framework */; };
+		89AE2A4993C92EBA9F5A0024 /* FoundationCleanupAdapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6E61B45424C383F0BF5B3C /* FoundationCleanupAdapters.swift */; };
 		8CB2328ACA78663834EF0BCF /* CleanSpaceMenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B026FCB9437CDFD39A7031 /* CleanSpaceMenuBarView.swift */; };
 		9258B5DEAA835AAAF3E381A5 /* Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7BD0E8E326F0782D794DB6 /* Formatting.swift */; };
 		97DA8C54763065009ED70163 /* RegisteredCleanupExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408E629E3421ED2405B53650 /* RegisteredCleanupExecutor.swift */; };
 		9C242F97812F2243537ED0B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76B95F59DB4848FBB4D88454 /* Assets.xcassets */; };
+		9E84F3BD36A11727DC9F7ED1 /* SignatureRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4307BEA3836F572F51C3834D /* SignatureRegistry.swift */; };
 		A24CB62A9ED5BB0A4B4CF67E /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FA50E3F3B8CA9CB8606802 /* AppEnvironment.swift */; };
 		A6C18F6CB6BC5EB082C23033 /* InspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF5F6D2729A856FFD409C21 /* InspectorView.swift */; };
 		A831C8A961506F18074F39A7 /* StorageAccessProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACB3648030342155D50A8C0 /* StorageAccessProviders.swift */; };
@@ -37,9 +42,14 @@
 		B2F74A3890FF5949529C2866 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 623EE353D4F5F1FD40D27AF0 /* Cocoa.framework */; };
 		B7F298EBECAF067CC569B9BF /* CleanupConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E543E652DDBB05586F6EDB16 /* CleanupConfirmationView.swift */; };
 		C2519CB4A9615D951A6C00D5 /* StorageCategoryPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FC293EEA063B69B55E9CD /* StorageCategoryPresentation.swift */; };
+		D128426D9D4246EA79633D6C /* SnapshotInspectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE1FB6797B7CB50D0D6AC5 /* SnapshotInspectorTests.swift */; };
 		D230DDF045EDCCD06E701B4D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = C89AFCB7122CD6FC531F4F94 /* PrivacyInfo.xcprivacy */; };
+		D2F2068B96C8DC82D36687A5 /* FoundationApplicationDiscoverer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F581CAE650590DB0CDE65 /* FoundationApplicationDiscoverer.swift */; };
 		DD65DA4BCEF1C885649D5BE4 /* StorageRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDAA097D1D18547C1FA0304 /* StorageRingView.swift */; };
 		DDB4EBEE3A68475B96D74E8D /* libCleanSpaceCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F515DEC444E42FA61DA807F /* libCleanSpaceCore.a */; };
+		E2B89489492B293C1A020AC6 /* SignatureRegistryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39C745286FE7EB8EC9F123C /* SignatureRegistryTests.swift */; };
+		E8357BD93056C46EB0F9FBC7 /* DashboardStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2638A27C5318BCACF0280F /* DashboardStateTests.swift */; };
+		EDE1FDB35DF12879B9063293 /* AccessibilityContrastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570E7E8764015F4485C7CB68 /* AccessibilityContrastTests.swift */; };
 		F99337362F8C78AF64DAF0F3 /* ScanModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1867A1865DF0E14F64BF9 /* ScanModels.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,23 +85,31 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0267B60C9080F86B7C8774F2 /* SnapshotInspectors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SnapshotInspectors.swift; path = Infrastructure/SnapshotInspectors.swift; sourceTree = "<group>"; };
 		03322EB3E21E7773504B5A7F /* StorageModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StorageModels.swift; path = Domain/StorageModels.swift; sourceTree = "<group>"; };
 		06AA8BB947ECA6A5FC006863 /* CleanSpaceStoreApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CleanSpaceStoreApp.swift; sourceTree = "<group>"; };
 		08A4B214AD57316DF0B918FF /* CleanSpaceDirect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanSpaceDirect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		115F7F83483A46209E9E133A /* RegisteredRootScanner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RegisteredRootScanner.swift; path = Infrastructure/RegisteredRootScanner.swift; sourceTree = "<group>"; };
 		1A143F8CB634F2AD189585C3 /* CleanSpaceStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanSpaceStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1ACE1FB6797B7CB50D0D6AC5 /* SnapshotInspectorTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SnapshotInspectorTests.swift; path = CleanSpaceCoreTests/SnapshotInspectorTests.swift; sourceTree = "<group>"; };
 		1F515DEC444E42FA61DA807F /* libCleanSpaceCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCleanSpaceCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2017E50B96BB437A3E39E4F4 /* Ports.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Ports.swift; path = Infrastructure/Ports.swift; sourceTree = "<group>"; };
+		3D2F581CAE650590DB0CDE65 /* FoundationApplicationDiscoverer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FoundationApplicationDiscoverer.swift; path = Infrastructure/FoundationApplicationDiscoverer.swift; sourceTree = "<group>"; };
+		3F6E61B45424C383F0BF5B3C /* FoundationCleanupAdapters.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FoundationCleanupAdapters.swift; path = Infrastructure/FoundationCleanupAdapters.swift; sourceTree = "<group>"; };
 		408E629E3421ED2405B53650 /* RegisteredCleanupExecutor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RegisteredCleanupExecutor.swift; path = Infrastructure/RegisteredCleanupExecutor.swift; sourceTree = "<group>"; };
+		4307BEA3836F572F51C3834D /* SignatureRegistry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SignatureRegistry.swift; path = Infrastructure/SignatureRegistry.swift; sourceTree = "<group>"; };
 		496C16A39044C2F5A4A75E7F /* CleanSpaceStore.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = CleanSpaceStore.entitlements; sourceTree = "<group>"; };
 		4ACB3648030342155D50A8C0 /* StorageAccessProviders.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StorageAccessProviders.swift; path = Infrastructure/StorageAccessProviders.swift; sourceTree = "<group>"; };
 		4C2FC293EEA063B69B55E9CD /* StorageCategoryPresentation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StorageCategoryPresentation.swift; path = UI/StorageCategoryPresentation.swift; sourceTree = "<group>"; };
+		570E7E8764015F4485C7CB68 /* AccessibilityContrastTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AccessibilityContrastTests.swift; path = CleanSpaceCoreTests/AccessibilityContrastTests.swift; sourceTree = "<group>"; };
+		5E1C066AF045C8475034F5BC /* CleanupExecutorTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CleanupExecutorTests.swift; path = CleanSpaceCoreTests/CleanupExecutorTests.swift; sourceTree = "<group>"; };
 		5F0AAA594E3F314AB36BBE28 /* CleanSpaceRootView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CleanSpaceRootView.swift; path = UI/CleanSpaceRootView.swift; sourceTree = "<group>"; };
 		61CC38275AC5C6F1679AE422 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = Resources/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		623EE353D4F5F1FD40D27AF0 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		63FA50E3F3B8CA9CB8606802 /* AppEnvironment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppEnvironment.swift; path = Environment/AppEnvironment.swift; sourceTree = "<group>"; };
 		6C891C8B1E5FA31831F8E7AE /* FoundationWorkspaceRevealer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FoundationWorkspaceRevealer.swift; path = Infrastructure/FoundationWorkspaceRevealer.swift; sourceTree = "<group>"; };
 		76B95F59DB4848FBB4D88454 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7E2638A27C5318BCACF0280F /* DashboardStateTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DashboardStateTests.swift; path = CleanSpaceCoreTests/DashboardStateTests.swift; sourceTree = "<group>"; };
 		89B026FCB9437CDFD39A7031 /* CleanSpaceMenuBarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CleanSpaceMenuBarView.swift; path = UI/CleanSpaceMenuBarView.swift; sourceTree = "<group>"; };
 		8B7BD0E8E326F0782D794DB6 /* Formatting.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Formatting.swift; path = UI/Formatting.swift; sourceTree = "<group>"; };
 		8FD5C3D31B0CB5F872316135 /* CleanSpaceDirect.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = CleanSpaceDirect.entitlements; sourceTree = "<group>"; };
@@ -103,6 +121,7 @@
 		AFF5F6D2729A856FFD409C21 /* InspectorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InspectorView.swift; path = UI/InspectorView.swift; sourceTree = "<group>"; };
 		B49A1143C2719009C43B1279 /* CleanSpaceDirectApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CleanSpaceDirectApp.swift; sourceTree = "<group>"; };
 		B52A0B974A1623CA6592E00E /* Shared.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
+		C39C745286FE7EB8EC9F123C /* SignatureRegistryTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SignatureRegistryTests.swift; path = CleanSpaceCoreTests/SignatureRegistryTests.swift; sourceTree = "<group>"; };
 		C4BB7B6240E920A995EC1719 /* CategoryListView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CategoryListView.swift; path = UI/CategoryListView.swift; sourceTree = "<group>"; };
 		C89AFCB7122CD6FC531F4F94 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = Resources/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		CBDAA097D1D18547C1FA0304 /* StorageRingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StorageRingView.swift; path = UI/StorageRingView.swift; sourceTree = "<group>"; };
@@ -110,6 +129,7 @@
 		E30CFD884A83761991351C63 /* CleanSpaceCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanSpaceCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E543E652DDBB05586F6EDB16 /* CleanupConfirmationView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CleanupConfirmationView.swift; path = UI/CleanupConfirmationView.swift; sourceTree = "<group>"; };
 		EAE1867A1865DF0E14F64BF9 /* ScanModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScanModels.swift; path = Domain/ScanModels.swift; sourceTree = "<group>"; };
+		EB25668259258607BBBA8223 /* ScannerRobustnessTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScannerRobustnessTests.swift; path = CleanSpaceCoreTests/ScannerRobustnessTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +194,10 @@
 				9814CCAC044C5BACB4F83554 /* StorageScanCatalog.swift */,
 				E543E652DDBB05586F6EDB16 /* CleanupConfirmationView.swift */,
 				89B026FCB9437CDFD39A7031 /* CleanSpaceMenuBarView.swift */,
+				3D2F581CAE650590DB0CDE65 /* FoundationApplicationDiscoverer.swift */,
+				3F6E61B45424C383F0BF5B3C /* FoundationCleanupAdapters.swift */,
+				4307BEA3836F572F51C3834D /* SignatureRegistry.swift */,
+				0267B60C9080F86B7C8774F2 /* SnapshotInspectors.swift */,
 			);
 			name = CleanSpaceCore;
 			path = CleanSpaceCore;
@@ -205,6 +229,12 @@
 			isa = PBXGroup;
 			children = (
 				CE3D5DEE1FDACD2B519F4480 /* StorageSemanticsTests.swift */,
+				570E7E8764015F4485C7CB68 /* AccessibilityContrastTests.swift */,
+				5E1C066AF045C8475034F5BC /* CleanupExecutorTests.swift */,
+				7E2638A27C5318BCACF0280F /* DashboardStateTests.swift */,
+				EB25668259258607BBBA8223 /* ScannerRobustnessTests.swift */,
+				C39C745286FE7EB8EC9F123C /* SignatureRegistryTests.swift */,
+				1ACE1FB6797B7CB50D0D6AC5 /* SnapshotInspectorTests.swift */,
 			);
 			name = Tests;
 			path = Tests;
@@ -457,6 +487,10 @@
 				025E1CDA3F0E50327C17C1A2 /* StorageScanCatalog.swift in Sources */,
 				B7F298EBECAF067CC569B9BF /* CleanupConfirmationView.swift in Sources */,
 				8CB2328ACA78663834EF0BCF /* CleanSpaceMenuBarView.swift in Sources */,
+				D2F2068B96C8DC82D36687A5 /* FoundationApplicationDiscoverer.swift in Sources */,
+				89AE2A4993C92EBA9F5A0024 /* FoundationCleanupAdapters.swift in Sources */,
+				9E84F3BD36A11727DC9F7ED1 /* SignatureRegistry.swift in Sources */,
+				23B7DC514E71DC59715C333B /* SnapshotInspectors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +507,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7529B0229032AD3F788D7384 /* StorageSemanticsTests.swift in Sources */,
+				EDE1FDB35DF12879B9063293 /* AccessibilityContrastTests.swift in Sources */,
+				66DEF474C10F206A3127C22D /* CleanupExecutorTests.swift in Sources */,
+				E8357BD93056C46EB0F9FBC7 /* DashboardStateTests.swift in Sources */,
+				20D024D021D14C7861A73DFF /* ScannerRobustnessTests.swift in Sources */,
+				E2B89489492B293C1A020AC6 /* SignatureRegistryTests.swift in Sources */,
+				D128426D9D4246EA79633D6C /* SnapshotInspectorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

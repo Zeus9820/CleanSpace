@@ -217,9 +217,10 @@ final class StorageSemanticsTests: XCTestCase {
 
     @MainActor
     func testDirectAccessDoesNotRequireFolderSelection() {
-        let state = DirectStorageAccessProvider().restoreAccess()
+        let fixtureHome = URL(filePath: "/temporary-fixture-home", directoryHint: .isDirectory)
+        let state = DirectStorageAccessProvider(home: fixtureHome).restoreAccess()
 
-        XCTAssertEqual(state.accessibleRoot, FileManager.default.homeDirectoryForCurrentUser)
+        XCTAssertEqual(state.accessibleRoot, fixtureHome)
     }
 
     @MainActor

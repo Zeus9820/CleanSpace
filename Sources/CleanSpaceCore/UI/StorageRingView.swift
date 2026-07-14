@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct StorageRingView: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     let capacity: VolumeCapacity?
     let measurements: [StorageCategory: StorageMeasurement]
     let selectedCategory: StorageCategory?
@@ -20,7 +21,7 @@ struct StorageRingView: View {
                                 style: .init(lineWidth: selectedCategory == segment.category ? 34 : 28, lineCap: .butt)
                             )
                             .rotationEffect(.degrees(-90))
-                            .animation(.snappy, value: selectedCategory)
+                            .animation(reduceMotion ? nil : .snappy, value: selectedCategory)
                             .contentShape(Circle().stroke(lineWidth: 40))
                             .onTapGesture { select(segment.category) }
                             .accessibilityLabel(segment.category.title)
@@ -56,6 +57,7 @@ struct StorageRingView: View {
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 10)
+        .accessibilityIdentifier("storage.ring")
     }
 
     private func metric(title: String, value: String) -> some View {

@@ -13,6 +13,10 @@ public struct StorageScanLocation: Identifiable, Sendable {
     public let excludedRelativePaths: [String]
     public let aggregateAsSingleItem: Bool
     public let requiresProtectedAppDataAccess: Bool
+    public let detectionSignature: String
+    public let signatureVersion: Int
+    public let modelSignature: ModelCacheSignature?
+    public let relatedBundleIdentifier: String?
 
     public init(
         id: String,
@@ -26,7 +30,11 @@ public struct StorageScanLocation: Identifiable, Sendable {
         isDefaultSelected: Bool = false,
         excludedRelativePaths: [String] = [],
         aggregateAsSingleItem: Bool = false,
-        requiresProtectedAppDataAccess: Bool = false
+        requiresProtectedAppDataAccess: Bool = false,
+        detectionSignature: String? = nil,
+        signatureVersion: Int = 1,
+        modelSignature: ModelCacheSignature? = nil,
+        relatedBundleIdentifier: String? = nil
     ) {
         self.id = id
         self.displayName = displayName
@@ -40,6 +48,10 @@ public struct StorageScanLocation: Identifiable, Sendable {
         self.excludedRelativePaths = excludedRelativePaths
         self.aggregateAsSingleItem = aggregateAsSingleItem
         self.requiresProtectedAppDataAccess = requiresProtectedAppDataAccess
+        self.detectionSignature = detectionSignature ?? "registered-path:\(relativePath)"
+        self.signatureVersion = signatureVersion
+        self.modelSignature = modelSignature
+        self.relatedBundleIdentifier = relatedBundleIdentifier ?? modelSignature?.relatedBundleIdentifier
     }
 
     public func root(in home: URL) -> URL {
@@ -58,7 +70,20 @@ public struct StorageScanCatalog: Sendable {
         self.locations = locations
     }
 
-    public static let standard = StorageScanCatalog(locations: [
+    public static let standard = StorageScanCatalog(locations: baseLocations + modelLocations)
+
+    private static let modelLocations = ModelSignatureRegistry.standard.signatures.map { signature in
+        StorageScanLocation(
+            id: signature.id, displayName: signature.displayName, relativePath: signature.relativePath,
+            category: .modelCaches, action: .permanentlyDelete, safety: .destructive,
+            consequence: "Selected models are permanently removed and must be downloaded again.",
+            regenerationCost: "Potentially many gigabytes and hours", aggregateAsSingleItem: true,
+            detectionSignature: signature.detectionSignature, signatureVersion: signature.version,
+            modelSignature: signature
+        )
+    }
+
+    private static let baseLocations: [StorageScanLocation] = [
         .init(
             id: "user-caches-v1", displayName: "Application Caches", relativePath: "Library/Caches",
             category: .caches, action: .permanentlyDelete, safety: .safeToRegenerate,
@@ -88,30 +113,6 @@ public struct StorageScanCatalog: Sendable {
             category: .caches, action: .permanentlyDelete, safety: .safeToRegenerate,
             consequence: "Xcode will rebuild indexes and compiled intermediates.", regenerationCost: "The next build and index will be slower",
             isDefaultSelected: true
-        ),
-        .init(
-            id: "huggingface-models-v1", displayName: "Hugging Face Models", relativePath: ".cache/huggingface",
-            category: .modelCaches, action: .permanentlyDelete, safety: .destructive,
-            consequence: "Selected models are permanently removed and must be downloaded again.", regenerationCost: "Potentially many gigabytes and hours",
-            aggregateAsSingleItem: true
-        ),
-        .init(
-            id: "ollama-models-v1", displayName: "Ollama Models", relativePath: ".ollama/models",
-            category: .modelCaches, action: .permanentlyDelete, safety: .destructive,
-            consequence: "Selected models are permanently removed from Ollama.", regenerationCost: "Potentially many gigabytes and hours",
-            aggregateAsSingleItem: true
-        ),
-        .init(
-            id: "lmstudio-cache-v1", displayName: "LM Studio Cache", relativePath: ".cache/lm-studio",
-            category: .modelCaches, action: .permanentlyDelete, safety: .destructive,
-            consequence: "Selected LM Studio downloads are permanently removed.", regenerationCost: "Requires re-downloading models",
-            aggregateAsSingleItem: true
-        ),
-        .init(
-            id: "lmstudio-models-v1", displayName: "LM Studio Models", relativePath: "Library/Application Support/LM Studio/models",
-            category: .modelCaches, action: .permanentlyDelete, safety: .destructive,
-            consequence: "Selected LM Studio models are permanently removed.", regenerationCost: "Requires re-downloading models",
-            aggregateAsSingleItem: true
         ),
         .init(
             id: "mobile-backups-v1", displayName: "Device Backups", relativePath: "Library/Application Support/MobileSync/Backup",
@@ -184,7 +185,7 @@ public struct StorageScanCatalog: Sendable {
             category: .trash, action: .permanentlyDelete, safety: .destructive,
             consequence: "Selected items are permanently deleted and cannot be recovered from Trash.", regenerationCost: "Irrecoverable"
         )
-    ])
+    ]
 
     public func cleanupRules(home: URL, profile: DistributionProfile) -> [CleanupRule] {
         locations.compactMap { location in
@@ -193,8 +194,8 @@ public struct StorageScanCatalog: Sendable {
                 id: location.id,
                 supportedProfiles: [profile],
                 allowedRoot: location.root(in: home),
-                detectionSignature: "registered-path:\(location.relativePath)",
-                signatureVersion: 1,
+                detectionSignature: location.detectionSignature,
+                signatureVersion: location.signatureVersion,
                 action: location.action,
                 safetyCopy: location.consequence,
                 allowsRoot: location.aggregateAsSingleItem
